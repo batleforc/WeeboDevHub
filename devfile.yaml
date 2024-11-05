@@ -1,0 +1,20 @@
+schemaVersion: 2.3.0
+metadata:
+  name: WeeboDevHub
+  language: golang
+  version: 1.0.0
+
+components:
+- name: tools
+  container:
+    image: ghcr.io/batleforc/weebodevimage/che-rust:main
+    memoryLimit: 10Gi
+    mountSources: true
+    endpoints:
+    - name: front
+      targetPort: 3000
+      exposure: public
+      protocol: https
+    env:
+    - name: RUST_ENV
+      value: "dev-che"
