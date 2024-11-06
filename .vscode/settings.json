@@ -1,0 +1,8 @@
+{
+  "editor.formatOnSave": true,
+  "editor.fontFamily": "'FiraCode Nerd Font','Droid Sans Mono', 'monospace', monospace",
+  "editor.fontLigatures": true,
+  "editor.tabSize": 2,
+  "editor.detectIndentation": false,
+  "sarif-viewer.connectToGithubCodeScanning": "off"
+}

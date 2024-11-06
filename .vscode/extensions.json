@@ -1,0 +1,16 @@
+{
+  "recommendations": [
+    "esbenp.prettier-vscode",
+    "github.copilot",
+    "mitchdenny.ecdc",
+    "aaron-bond.better-comments",
+    "bierner.markdown-mermaid",
+    "hristian-kohler.path-intellisense",
+    "helixquar.randomeverything",
+    "shardulm94.trailing-spaces",
+    "tamasfe.even-better-toml",
+    "edwinkofler.vscode-hyperupcall-pack-markdown",
+    "proxzima.sweetdracula",
+    "wdhongtw.gpg-indicator"
+  ]
+}
