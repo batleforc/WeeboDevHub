@@ -72,6 +72,16 @@ import {
 
 import { ReadmeCard, isReadmeAvailable } from '@axis-backstage/plugin-readme';
 
+import {
+  EntityEndOfLifeCard,
+  isEndOfLifeAvailable,
+} from '@dweber019/backstage-plugin-endoflife';
+
+import {
+  EntityApiDocsSpectralLinterContent,
+  isApiDocsSpectralLinterAvailable,
+} from '@dweber019/backstage-plugin-api-docs-spectral-linter';
+
 const techdocsContent = (
   <EntityTechdocsContent>
     <TechDocsAddons>
@@ -154,8 +164,15 @@ const overviewContent = (
       <EntityHasSubcomponentsCard variant="gridItem" />
     </Grid>
     <EntitySwitch>
+      <EntitySwitch.Case if={isEndOfLifeAvailable}>
+        <Grid item md={6}>
+          <EntityEndOfLifeCard />
+        </Grid>
+      </EntitySwitch.Case>
+    </EntitySwitch>
+    <EntitySwitch>
       <EntitySwitch.Case if={isReadmeAvailable}>
-        <Grid md={6} xs={12}>
+        <Grid item md={6} xs={12}>
           <ReadmeCard maxHeight={350} />
         </Grid>
       </EntitySwitch.Case>
@@ -182,9 +199,6 @@ const serviceEntityPage = (
     </EntityLayout.Route>
     <EntityLayout.Route path="/topology" title="Topology">
       <TopologyPage />
-    </EntityLayout.Route>
-    <EntityLayout.Route path="/github-actions" title="GitHub Actions">
-      <EntityGithubActionsContent />
     </EntityLayout.Route>
     <EntityLayout.Route path="/api" title="API">
       <Grid container spacing={3} alignItems="stretch">
@@ -309,6 +323,13 @@ const apiPage = (
           </Grid>
         </Grid>
       </Grid>
+    </EntityLayout.Route>
+    <EntityLayout.Route
+      if={isApiDocsSpectralLinterAvailable}
+      path="/linter"
+      title="Linter"
+    >
+      <EntityApiDocsSpectralLinterContent />
     </EntityLayout.Route>
 
     <EntityLayout.Route path="/definition" title="Definition">

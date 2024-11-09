@@ -40,6 +40,8 @@
     "@backstage/plugin-techdocs-react": "^1.2.9",
     "@backstage/plugin-user-settings": "^0.8.14",
     "@backstage/theme": "^0.6.0",
+    "@dweber019/backstage-plugin-api-docs-spectral-linter": "^0.4.7",
+    "@dweber019/backstage-plugin-endoflife": "^0.0.16",
     "@janus-idp/backstage-plugin-tekton": "^3.15.1",
     "@janus-idp/backstage-plugin-topology": "^1.30.1",
     "@material-ui/core": "^4.12.2",

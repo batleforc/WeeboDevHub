@@ -1,0 +1,10 @@
+apiVersion: backstage.io/v1alpha1
+kind: Location
+metadata:
+  name: monofolio
+spec:
+  type: url
+  targets:
+  - https://github.com/batleforc/Monofolio/blob/main/catalog-info-back.yaml
+  - https://github.com/batleforc/Monofolio/blob/main/catalog-info-front.yaml
+  - https://github.com/batleforc/Monofolio/blob/main/catalog-info-api.yaml

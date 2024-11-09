@@ -63,8 +63,15 @@ auth:
   providers:
     # See https://backstage.io/docs/auth/guest/provider
     guest: {}
+    github:
+      development:
+        clientId: ${GITHUB_CLIENT_ID}
+        clientSecret: ${GITHUB_CLIENT_SECRET}
 
 scaffolder: # see https://backstage.io/docs/features/software-templates/configuration for software template options
+
+spectralLinter:
+  openApiRulesetUrl: https://raw.githubusercontent.com/batleforc/Monofolio/refs/heads/main/.spectral.yaml
 
 catalog:
   import:
@@ -73,13 +80,9 @@ catalog:
   rules:
   - allow: [ Component, System, API, Resource, Location ]
   locations:
-  # Local example data, file locations are relative to the backend process, typically `packages/backend`
-  - type: file
-    target: ../../examples/entities.yaml
-
+  # Weebo scope
   - type: file
     target: ../../model/location/*.yaml
-
   - type: file
     target: ../../model/system/*.yaml
   - type: file
@@ -90,6 +93,10 @@ catalog:
     target: ../../model/group/weebdev.yaml
     rules:
     - allow: [ Group ]
+
+  # Local example data, file locations are relative to the backend process, typically `packages/backend`
+  - type: file
+    target: ../../examples/entities.yaml
 
   # Local example template
   - type: file
