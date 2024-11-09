@@ -5,6 +5,6 @@ metadata:
 spec:
   type: url
   targets:
-  - https://github.com/batleforc/Weebo4GitOps/catalog-info.yaml
-  - https://github.com/batleforc/WeeboDevImage/catalog-info.yaml
-  - https://github.com/batleforc/WeeboDevHub/catalog-info.yaml
+  - https://github.com/batleforc/Weebo4GitOps/blob/main/catalog-info.yaml
+  - https://github.com/batleforc/WeeboDevImage/blob/main/catalog-info.yaml
+  - https://github.com/batleforc/WeeboDevHub/blob/main/catalog-info.yaml

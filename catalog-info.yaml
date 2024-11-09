@@ -18,5 +18,5 @@ metadata:
 spec:
   type: library
   lifecycle: production
-  owner: weebodev
+  owner: WeeboDev
   system: infra
