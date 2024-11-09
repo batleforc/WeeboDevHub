@@ -16,12 +16,12 @@ backend:
   # Uncomment the following host directive to bind to specific interfaces
   # host: 127.0.0.1
   csp:
-    connect-src: ["'self'", 'http:', 'https:']
+    connect-src: [ "'self'", 'http:', 'https:' ]
     # Content-Security-Policy directives follow the Helmet format: https://helmetjs.github.io/#reference
     # Default Helmet Content-Security-Policy values can be removed by setting the key to false
   cors:
-    origin: '*'
-    methods: [GET, HEAD, PATCH, POST, PUT, DELETE]
+    origin: ${FRONTEND_URL}
+    methods: [ GET, HEAD, PATCH, POST, PUT, DELETE, OPTIONS ]
     credentials: true
   # This is for local development only, it is not recommended to use this in production
   # The production database configuration is stored in app-config.production.yaml
@@ -32,17 +32,17 @@ backend:
 
 integrations:
   github:
-    - host: github.com
-      # This is a Personal Access Token or PAT from GitHub. You can find out how to generate this token, and more information
-      # about setting up the GitHub integration here: https://backstage.io/docs/integrations/github/locations#configuration
-      token: ${GITHUB_TOKEN}
-      ### Example for how to add your GitHub Enterprise instance using the API:
-      # - host: ghe.example.net
-      #   apiBaseUrl: https://ghe.example.net/api/v3
-      #   token: ${GHE_TOKEN}
+  - host: github.com
+    # This is a Personal Access Token or PAT from GitHub. You can find out how to generate this token, and more information
+    # about setting up the GitHub integration here: https://backstage.io/docs/integrations/github/locations#configuration
+    token: ${GITHUB_TOKEN}
+    ### Example for how to add your GitHub Enterprise instance using the API:
+    # - host: ghe.example.net
+    #   apiBaseUrl: https://ghe.example.net/api/v3
+    #   token: ${GHE_TOKEN}
 
-proxy:
-### Example for how to add a proxy endpoint for the frontend.
+proxy: ### Example for how to add a proxy endpoint for the frontend.
+
 ### A typical reason to do this is to handle HTTPS and CORS for internal services.
 # endpoints:
 #   '/test':
@@ -61,49 +61,81 @@ techdocs:
     type: 'local' # Alternatives - 'googleGcs' or 'awsS3'. Read documentation for using alternatives.
 
 auth:
+  environment: development
   # see https://backstage.io/docs/auth/ to learn about auth providers
   providers:
     # See https://backstage.io/docs/auth/guest/provider
     guest: {}
 
-scaffolder:
-# see https://backstage.io/docs/features/software-templates/configuration for software template options
+scaffolder: # see https://backstage.io/docs/features/software-templates/configuration for software template options
 
 catalog:
   import:
     entityFilename: catalog-info.yaml
     pullRequestBranchName: backstage-integration
   rules:
-    - allow: [Component, System, API, Resource, Location]
+  - allow: [ Component, System, API, Resource, Location ]
   locations:
-    # Local example data, file locations are relative to the backend process, typically `packages/backend`
-    - type: file
-      target: ../../examples/entities.yaml
+  # Local example data, file locations are relative to the backend process, typically `packages/backend`
+  - type: file
+    target: ../../examples/entities.yaml
 
-    # Local example template
-    - type: file
-      target: ../../examples/template/template.yaml
-      rules:
-        - allow: [Template]
+  - type: file
+    target: ../../model/location/*.yaml
 
-    # Local example organizational data
-    - type: file
-      target: ../../examples/org.yaml
-      rules:
-        - allow: [User, Group]
+  - type: file
+    target: ../../model/system/*.yaml
+  - type: file
+    target: ../../model/user/*.yaml
+    rules:
+    - allow: [ User ]
+  - type: file
+    target: ../../model/group/weebdev.yaml
+    rules:
+    - allow: [ Group ]
 
+  # Local example template
+  - type: file
+    target: ../../examples/template/template.yaml
+    rules:
+    - allow: [ Template ]
+
+  # Local example organizational data
+  - type: file
+    target: ../../examples/org.yaml
+    rules:
+    - allow: [ User, Group ]
   ## Uncomment these lines to add more example data
   # - type: url
   #   target: https://github.com/backstage/backstage/blob/master/packages/catalog-model/examples/all.yaml
 
-## Uncomment these lines to add an example org
-# - type: url
-#   target: https://github.com/backstage/backstage/blob/master/packages/catalog-model/examples/acme-corp.yaml
-#   rules:
-#     - allow: [User, Group]
+  ## Uncomment these lines to add an example org
+  # - type: url
+  #   target: https://github.com/backstage/backstage/blob/master/packages/catalog-model/examples/acme-corp.yaml
+  #   rules:
+  #     - allow: [User, Group]
 
 kubernetes:
-# see https://backstage.io/docs/features/kubernetes/configuration for kubernetes configuration options
+  # see https://backstage.io/docs/features/kubernetes/configuration for kubernetes configuration options
+  serviceLocatorMethod:
+    type: multiTenant
+  clusterLocatorMethods:
+  - type: 'config'
+    clusters:
+    - url: ${K8S_CLUSTER_URL}
+      name: weebo4
+      authProvider: 'serviceAccount'
+      skipTLSVerify: false
+      skipMetricsLookup: true
+      serviceAccountToken: ${K8S_SA_TOKEN}
+      caFile: ${K8S_CA_FILE}
+      customResources:
+      - group: 'tekton.dev'
+        apiVersion: 'v1'
+        plural: 'pipelineruns'
+      - group: 'tekton.dev'
+        apiVersion: 'v1'
+        plural: 'taskruns'
 
 # see https://backstage.io/docs/permissions/getting-started for more on the permission framework
 permission:

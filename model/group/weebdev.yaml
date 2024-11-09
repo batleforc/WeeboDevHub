@@ -1,0 +1,12 @@
+apiVersion: backstage.io/v1alpha1
+kind: Group
+metadata:
+  name: weebdev
+  description: Weebo Development Team
+spec:
+  type: root
+  profile:
+    displayName: WeeboDev
+    email: dev@weebo.fr
+  children: []
+  members: [ batleforc ]

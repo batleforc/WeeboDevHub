@@ -2,12 +2,21 @@ apiVersion: backstage.io/v1alpha1
 kind: Component
 metadata:
   name: weebodevhub
-  description: An example of a Backstage application.
-  # Example for optional annotations
-  # annotations:
-  #   github.com/project-slug: backstage/backstage
-  #   backstage.io/techdocs-ref: dir:.
+  description: WeeboDevHub backstage instance for Weebo
+  tags:
+  - backstage
+  - weebodev
+  - developerhub
+  links:
+  - url: https://github.com/batleforc/WeeboDevHub
+    title: Repo
+    icon: github
+  annotations:
+    backstage.io/managed-by-location: url:https://github.com/batleforc/WeeboDevHub/blob/main/catalog-info.yaml
+    backstage.io/source-location: url:https://github.com/batleforc/WeeboDevHub
+    github.com/project-slug: batleforc/WeeboDevHub
 spec:
-  type: website
-  owner: john@example.com
-  lifecycle: experimental
+  type: library
+  lifecycle: production
+  owner: weebodev
+  system: infra

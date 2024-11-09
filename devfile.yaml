@@ -5,20 +5,41 @@ metadata:
   version: 1.0.0
 
 components:
-  - name: tools
-    container:
-      image: ghcr.io/batleforc/weebodevimage/che-rust:main
-      memoryLimit: 10Gi
-      mountSources: true
-      endpoints:
-        - name: front
-          targetPort: 3000
-          exposure: public
-          protocol: http
-        - name: back
-          targetPort: 7000
-          exposure: public
-          protocol: http
-      env:
-        - name: RUST_ENV
-          value: 'dev-che'
+- name: tools
+  container:
+    image: ghcr.io/batleforc/weebodevimage/che-rust:main
+    memoryLimit: 10Gi
+    mountSources: true
+    endpoints:
+    - name: front
+      targetPort: 3000
+      exposure: public
+      protocol: http
+    - name: back
+      targetPort: 7000
+      exposure: public
+      protocol: http
+    env:
+    - name: RUST_ENV
+      value: 'dev-che'
+- name: volume-pg
+  volume:
+    size: 5Gi
+- name: postgres
+  container:
+    image: postgres:17
+    memoryLimit: 512Mi
+    env:
+    - name: POSTGRES_USER
+      value: user
+    - name: POSTGRES_PASSWORD
+      value: password
+    - name: POSTGRES_DB
+      value: database
+    endpoints:
+    - name: postgres
+      targetPort: 5432
+      exposure: none
+    volumeMounts:
+    - name: volume-pg
+      path: /var/lib/postgresql/data

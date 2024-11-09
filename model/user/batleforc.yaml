@@ -1,0 +1,9 @@
+apiVersion: backstage.io/v1alpha1
+kind: User
+metadata:
+  name: batleforc
+spec:
+  profile:
+    displayName: Maxime Leriche
+    email: maxleriche.60@gmail.com
+  memberOf: [ weebdev ]

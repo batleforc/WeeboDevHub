@@ -53,11 +53,17 @@ import {
 
 import { TechDocsAddons } from '@backstage/plugin-techdocs-react';
 import { ReportIssue } from '@backstage/plugin-techdocs-module-addons-contrib';
+import { TopologyPage } from '@janus-idp/backstage-plugin-topology';
 
 import {
   EntityKubernetesContent,
   isKubernetesAvailable,
 } from '@backstage/plugin-kubernetes';
+
+import {
+  isTektonCIAvailable,
+  TektonCI,
+} from '@janus-idp/backstage-plugin-tekton';
 
 const techdocsContent = (
   <EntityTechdocsContent>
@@ -94,6 +100,9 @@ const cicdContent = (
           </Button>
         }
       />
+    </EntitySwitch.Case>
+    <EntitySwitch.Case if={isTektonCIAvailable}>
+      <TektonCI />
     </EntitySwitch.Case>
   </EntitySwitch>
 );
@@ -162,7 +171,9 @@ const serviceEntityPage = (
     >
       <EntityKubernetesContent />
     </EntityLayout.Route>
-
+    <EntityLayout.Route path="/topology" title="Topology">
+      <TopologyPage />
+    </EntityLayout.Route>
     <EntityLayout.Route path="/api" title="API">
       <Grid container spacing={3} alignItems="stretch">
         <Grid item md={6}>
