@@ -3,4 +3,4 @@ kind: System
 metadata:
   name: infra
 spec:
-  owner: weebdev
+  owner: WeeboDev

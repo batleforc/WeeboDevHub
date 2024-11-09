@@ -13,7 +13,7 @@ metadata:
     icon: github
   annotations:
     backstage.io/managed-by-location: url:https://github.com/batleforc/WeeboDevHub/blob/main/catalog-info.yaml
-    backstage.io/source-location: url:https://github.com/batleforc/WeeboDevHub
+    backstage.io/source-location: url:https://github.com/batleforc/WeeboDevHub/blob/main/
     github.com/project-slug: batleforc/WeeboDevHub
 spec:
   type: library

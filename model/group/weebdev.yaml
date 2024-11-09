@@ -1,7 +1,7 @@
 apiVersion: backstage.io/v1alpha1
 kind: Group
 metadata:
-  name: weebdev
+  name: WeeboDev
   description: Weebo Development Team
 spec:
   type: root
