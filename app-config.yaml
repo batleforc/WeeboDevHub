@@ -38,7 +38,9 @@ integrations:
   - host: git.weebo.fr
     token: ${GITEA_TOKEN}
 
-proxy: ### Example for how to add a proxy endpoint for the frontend.
+proxy:
+  '/xkcd-proxy':
+    target: https://xkcd.com/
 
 ### A typical reason to do this is to handle HTTPS and CORS for internal services.
 # endpoints:

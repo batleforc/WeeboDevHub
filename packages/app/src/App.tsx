@@ -1,5 +1,5 @@
 import React from 'react';
-import { Navigate, Route } from 'react-router-dom';
+import { Route } from 'react-router-dom';
 import { apiDocsPlugin, ApiExplorerPage } from '@backstage/plugin-api-docs';
 import {
   CatalogEntityPage,
@@ -25,6 +25,7 @@ import { apis } from './apis';
 import { entityPage } from './components/catalog/EntityPage';
 import { searchPage } from './components/search/SearchPage';
 import { Root } from './components/Root';
+import { HomepageCompositionRoot } from '@backstage/plugin-home';
 
 import {
   AlertDisplay,
@@ -38,6 +39,8 @@ import { CatalogGraphPage } from '@backstage/plugin-catalog-graph';
 import { RequirePermission } from '@backstage/plugin-permission-react';
 import { catalogEntityCreatePermission } from '@backstage/plugin-catalog-common/alpha';
 import { configApiRef, useApi } from '@backstage/core-plugin-api';
+
+import { homePage } from './components/home/HomePage';
 
 const app = createApp({
   apis,
@@ -62,16 +65,18 @@ const app = createApp({
     SignInPage: props => {
       const configApi = useApi(configApiRef);
       if (configApi.getString('auth.environment') === 'development') {
-        return <SignInPage {...props}  providers={['guest']}/>;
+        return <SignInPage {...props} providers={['guest']} />;
       }
-      return <ProxiedSignInPage {...props} provider="oauth2Proxy" />
+      return <ProxiedSignInPage {...props} provider="oauth2Proxy" />;
     },
   },
 });
 
 const routes = (
   <FlatRoutes>
-    <Route path="/" element={<Navigate to="catalog" />} />
+    <Route path="/" element={<HomepageCompositionRoot />}>
+      {homePage}
+    </Route>
     <Route path="/catalog" element={<CatalogIndexPage />} />
     <Route
       path="/catalog/:namespace/:kind/:name"

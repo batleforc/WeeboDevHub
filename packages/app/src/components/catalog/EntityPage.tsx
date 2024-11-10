@@ -82,6 +82,10 @@ import {
   isApiDocsSpectralLinterAvailable,
 } from '@dweber019/backstage-plugin-api-docs-spectral-linter';
 
+import { DevQuote } from '@parsifal-m/plugin-dev-quotes-homepage';
+
+import { EntityTodoContent } from '@backstage-community/plugin-todo';
+
 const techdocsContent = (
   <EntityTechdocsContent>
     <TechDocsAddons>
@@ -148,28 +152,33 @@ const entityWarningContent = (
 );
 
 const overviewContent = (
-  <Grid container spacing={3} alignItems="stretch">
+  <Grid container spacing={2} alignItems="stretch">
     {entityWarningContent}
-    <Grid item md={6}>
-      <EntityAboutCard variant="gridItem" />
+    <Grid container alignItems="center" md={6} xs={12} spacing={4}>
+      <Grid item md={12} xs={12}>
+        <EntityLinksCard />
+      </Grid>
+      <Grid item md={12} xs={12}>
+        <EntityAboutCard variant="gridItem" />
+      </Grid>
     </Grid>
+
     <Grid item md={6} xs={12}>
       <EntityCatalogGraphCard variant="gridItem" height={400} />
     </Grid>
 
-    <Grid item md={4} xs={12}>
-      <EntityLinksCard />
+    <Grid container alignItems="center" md={6} xs={12} spacing={4}>
+      <EntitySwitch>
+        <EntitySwitch.Case if={isEndOfLifeAvailable}>
+          <Grid item md={12}>
+            <EntityEndOfLifeCard />
+          </Grid>
+        </EntitySwitch.Case>
+      </EntitySwitch>
+      <Grid item md={12} xs={12}>
+        <EntityHasSubcomponentsCard variant="gridItem" />
+      </Grid>
     </Grid>
-    <Grid item md={8} xs={12}>
-      <EntityHasSubcomponentsCard variant="gridItem" />
-    </Grid>
-    <EntitySwitch>
-      <EntitySwitch.Case if={isEndOfLifeAvailable}>
-        <Grid item md={6}>
-          <EntityEndOfLifeCard />
-        </Grid>
-      </EntitySwitch.Case>
-    </EntitySwitch>
     <EntitySwitch>
       <EntitySwitch.Case if={isReadmeAvailable}>
         <Grid item md={6} xs={12}>
@@ -177,6 +186,10 @@ const overviewContent = (
         </Grid>
       </EntitySwitch.Case>
     </EntitySwitch>
+
+    <Grid item md={12} xs={12}>
+      <DevQuote />
+    </Grid>
   </Grid>
 );
 
@@ -188,6 +201,10 @@ const serviceEntityPage = (
 
     <EntityLayout.Route path="/ci-cd" title="CI/CD">
       {cicdContent}
+    </EntityLayout.Route>
+
+    <EntityLayout.Route path="/todo" title="Todo">
+      <EntityTodoContent />
     </EntityLayout.Route>
 
     <EntityLayout.Route
@@ -236,6 +253,10 @@ const websiteEntityPage = (
 
     <EntityLayout.Route path="/ci-cd" title="CI/CD">
       {cicdContent}
+    </EntityLayout.Route>
+
+    <EntityLayout.Route path="/todo" title="Todo">
+      <EntityTodoContent />
     </EntityLayout.Route>
 
     <EntityLayout.Route

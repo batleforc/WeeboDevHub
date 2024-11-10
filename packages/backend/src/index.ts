@@ -31,6 +31,7 @@ backend.add(
   import('@backstage/plugin-catalog-backend-module-scaffolder-entity-model'),
 );
 backend.add(import('@axis-backstage/plugin-readme-backend'));
+backend.add(import('@backstage-community/plugin-todo-backend'));
 
 backend.add(import('@backstage/plugin-events-backend'));
 
