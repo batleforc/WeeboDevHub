@@ -6,7 +6,6 @@ import {
   HomePageCompanyLogo,
   HomePageStarredEntities,
   HomePageToolkit,
-  TemplateBackstageLogo,
   TemplateBackstageLogoIcon,
 } from '@backstage/plugin-home';
 import { HomePageSearchBar } from '@backstage/plugin-search';
