@@ -27,10 +27,6 @@ jobs:
     runs-on: ubuntu-latest
     needs:
       - prepare
-    strategy:
-      matrix:
-        manifest:
-          - ./che-min/Containerfile
     permissions:
       contents: read
       packages: write
