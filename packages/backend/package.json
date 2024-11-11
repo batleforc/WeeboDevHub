@@ -19,6 +19,7 @@
     "@axis-backstage/plugin-readme-backend": "^0.10.0",
     "@backstage-community/plugin-todo-backend": "^0.3.21",
     "@backstage/backend-defaults": "^0.5.2",
+    "@backstage/backend-plugin-api": "^1.0.1",
     "@backstage/config": "^1.2.0",
     "@backstage/plugin-app-backend": "^0.3.76",
     "@backstage/plugin-auth-backend": "^0.23.1",

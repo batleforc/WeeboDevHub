@@ -32,9 +32,6 @@ auth:
   environment: production
   providers:
     oauth2Proxy:
-      signIn:
-        resolvers:
-        - resolver: forwardedUserMatchingUserEntityName
     github:
       development:
         clientId: ${GITHUB_CLIENT_ID}
