@@ -19,6 +19,14 @@ backend:
     connect-src: [ "'self'", 'http:', 'https:' ]
     # Content-Security-Policy directives follow the Helmet format: https://helmetjs.github.io/#reference
     # Default Helmet Content-Security-Policy values can be removed by setting the key to false
+    img-src:
+      [
+        "'self'",
+        'data:',
+        'https:',
+        'https://avatars.githubusercontent.com',
+        'https://imgs.xkcd.com'
+      ]
   cors:
     origin: ${FRONTEND_URL}
     methods: [ GET, HEAD, PATCH, POST, PUT, DELETE, OPTIONS ]
