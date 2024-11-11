@@ -42,14 +42,14 @@ catalog:
   - allow: [ Component, System, API, Resource, Location ]
   locations:
   - type: file
-    target: ../../model/location/*.yaml
+    target: /app/model/location/*.yaml
   - type: file
-    target: ../../model/system/*.yaml
+    target: /app/model/system/*.yaml
   - type: file
-    target: ../../model/user/*.yaml
+    target: /app/model/user/*.yaml
     rules:
     - allow: [ User ]
   - type: file
-    target: ../../model/group/weebdev.yaml
+    target: /app/model/group/weebdev.yaml
     rules:
     - allow: [ Group ]
