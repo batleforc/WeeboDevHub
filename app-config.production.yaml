@@ -31,7 +31,7 @@ backend:
 auth:
   environment: production
   providers:
-    oauth2Proxy:
+    oauth2Proxy: {}
     github:
       development:
         clientId: ${GITHUB_CLIENT_ID}

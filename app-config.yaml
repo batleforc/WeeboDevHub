@@ -39,8 +39,9 @@ integrations:
     token: ${GITEA_TOKEN}
 
 proxy:
-  '/xkcd-proxy':
-    target: https://xkcd.com/
+  endpoints:
+    '/xkcd-proxy':
+      target: https://xkcd.com/
 
 ### A typical reason to do this is to handle HTTPS and CORS for internal services.
 # endpoints:
@@ -65,6 +66,7 @@ auth:
   providers:
     # See https://backstage.io/docs/auth/guest/provider
     guest: {}
+    oauth2Proxy: {}
     github:
       development:
         clientId: ${GITHUB_CLIENT_ID}

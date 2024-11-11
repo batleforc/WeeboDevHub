@@ -65,7 +65,7 @@ const app = createApp({
     SignInPage: props => {
       const configApi = useApi(configApiRef);
       if (configApi.getString('auth.environment') === 'development') {
-        return <SignInPage {...props} providers={['guest']} />;
+        return <SignInPage {...props} providers={['guest', 'custom']} />;
       }
       return <ProxiedSignInPage {...props} provider="oauth2Proxy" />;
     },
