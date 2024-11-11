@@ -34,7 +34,7 @@ auth:
     oauth2Proxy:
       signIn:
         resolvers:
-        - resolver: emailMatchingUserEntityProfileEmail
+        - resolver: forwardedUserMatchingUserEntityName
     github:
       development:
         clientId: ${GITHUB_CLIENT_ID}
