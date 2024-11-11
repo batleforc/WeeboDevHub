@@ -23,29 +23,12 @@ const customAuth = createBackendModule({
           factory: createProxyAuthProviderFactory({
             authenticator: oauth2ProxyAuthenticator,
             async signInResolver(info, ctx) {
-              /** *******************************************************************
-               * Custom resolver code goes here, see farther down in this article! *
-               * "info" is the sign in result from the upstream (github here), and *
-               * "ctx" contains useful utilities for token issuance etc.           *
-               *********************************************************************/
-              console.log('***********************************************');
-              console.log(info);
-              console.log('***********************************************');
-
-              const name = info.result.getHeader(
-                'x-forwarded-preferred-username',
-              );
+              const name = info.result
+                .getHeader('x-forwarded-preferred-username')
+                ?.split('@')[0];
               if (!name) {
                 throw new Error('No username found in headers');
               }
-
-              // This helper function handles sign-in by looking up a user in the catalog.
-              // The lookup can be done either by reference, annotations, or custom filters.
-              //
-              // The helper also issues a token for the user, using the standard group
-              // membership logic to determine the ownership references of the user.
-              //
-              // There are a number of other methods on the ctx, feel free to explore them!
               return ctx.signInWithCatalogUser({
                 entityRef: { name },
               });
