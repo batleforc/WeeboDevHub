@@ -33,7 +33,7 @@ auth:
   providers:
     oauth2Proxy: {}
     github:
-      development:
+      production:
         clientId: ${GITHUB_CLIENT_ID}
         clientSecret: ${GITHUB_CLIENT_SECRET}
 
