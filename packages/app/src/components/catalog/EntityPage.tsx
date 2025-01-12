@@ -91,6 +91,8 @@ import {
   isArgocdAvailable,
 } from '@roadiehq/backstage-plugin-argo-cd';
 
+import { EntitySonarQubeCard } from '@backstage-community/plugin-sonarqube';
+
 const techdocsContent = (
   <EntityTechdocsContent>
     <TechDocsAddons>
@@ -209,6 +211,10 @@ const overviewContent = (
         </Grid>
       </EntitySwitch.Case>
     </EntitySwitch>
+
+    <Grid item md={6}>
+      <EntitySonarQubeCard variant="gridItem" />
+    </Grid>
 
     <Grid item md={12} xs={12}>
       <DevQuote />

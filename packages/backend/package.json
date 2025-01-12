@@ -17,6 +17,7 @@
   },
   "dependencies": {
     "@axis-backstage/plugin-readme-backend": "^0.10.0",
+    "@backstage-community/plugin-sonarqube-backend": "^0.4.0",
     "@backstage-community/plugin-todo-backend": "^0.3.21",
     "@backstage/backend-defaults": "^0.5.2",
     "@backstage/backend-plugin-api": "^1.0.1",
