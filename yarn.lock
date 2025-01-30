@@ -1182,6 +1182,19 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@axis-backstage/plugin-analytics-module-umami@npm:^0.5.0":
+  version: 0.5.0
+  resolution: "@axis-backstage/plugin-analytics-module-umami@npm:0.5.0"
+  dependencies:
+    "@backstage/config": "npm:^1.2.0"
+    "@backstage/core-components": "npm:^0.14.10"
+    "@backstage/core-plugin-api": "npm:^1.9.3"
+  peerDependencies:
+    react: ^17.0.0 || ^18.0.0
+  checksum: 10c0/a794e571cd5b51b02b77cd7d5d5147efd93ade5d7c3468084184ed27831ca202103998c976c466d4a362d8f9cdb48ab68aed049fc151b7d905db77c4b14f7044
+  languageName: node
+  linkType: hard
+
 "@axis-backstage/plugin-readme-backend@npm:^0.10.0":
   version: 0.10.0
   resolution: "@axis-backstage/plugin-readme-backend@npm:0.10.0"
@@ -15856,6 +15869,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "app@workspace:packages/app"
   dependencies:
+    "@axis-backstage/plugin-analytics-module-umami": "npm:^0.5.0"
     "@axis-backstage/plugin-readme": "npm:^0.12.0"
     "@backstage-community/plugin-github-actions": "npm:^0.6.24"
     "@backstage-community/plugin-sonarqube": "npm:^0.9.0"

@@ -1,6 +1,10 @@
 app:
   # Should be the same as backend.baseUrl when using the `app-backend` plugin.
   baseUrl: ${FRONTEND_URL}
+  analytics:
+    umami:
+      dataDomain: ${UMAMI_DATA_DOMAIN}
+      tracingId: ${UMAMI_TRACING_ID}
 
 backend:
   # Note that the baseUrl should be the URL that the browser and other clients
