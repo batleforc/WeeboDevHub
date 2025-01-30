@@ -4,7 +4,7 @@ app:
   analytics:
     umami:
       dataDomain: ${UMAMI_DATA_DOMAIN}
-      tracingId: ${UMAMI_TRACING_ID}
+      trackingId: ${UMAMI_TRACING_ID}
 
 backend:
   # Note that the baseUrl should be the URL that the browser and other clients
